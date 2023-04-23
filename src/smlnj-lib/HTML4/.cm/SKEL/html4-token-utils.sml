@@ -1,0 +1,2 @@
+Skeleton 5
+d2f4ä¢HTML4AttrLexer"d"TextIO"ä¢String"d"AntlrStreamPos"ad"HTML4TokenUtils"h5Caä¢H4U"gp1ä¢HTML4Utils"ad"HTML4AttrParser"jgp1ÿgp1e"HTML4AttrParseFn"egp1d"HTML4Tokens"f8d"Char"d"CharVectorSlice"ÿCd"Atom"d"IntInf"ÿÿd"Substring"Nad"AtomMap"jjh0gp1e"RedBlackMapFn"gp1c"ORD_MAP"N

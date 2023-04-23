@@ -1,0 +1,2 @@
+Skeleton 5
+d5Cf6d"List"Cd"ListPair"d"Char"d"Int"d"TextIO"ä¢RegExpSyntax"Naã¢NFA"h1aä¢IntSet"gp1c"ORD_SET"aä¢Nfa"jh9aä¢S"gp1ÿ.aÿêè0çğ±å¢ListSetFn"áä¢Int2Set"ÿ6áä¢MoveSet"ÿ6Caä¢CharSet"gp2ÿ)ÿ‚&áä¢I"çğ±ÿáä¢I2"çğ±ÿ‚	áä¢M"çğ±ÿ‚áä¢C"çğ±ÿ‚&Ngp1ÿ?aã¢DFA"ÿ7ad"Dfa"jh9aä¢N"gp1ÿaÿgp2ÿ„ÿaä¢IntSetSet"ÿ6ÿ‚Cÿ‚aÿ‚&ÿ6ad"IS"gp1ÿ„ÿ‚9ÿƒCÿƒÿƒad"A2"gp1d"Array2"ad"A"gp1d"Array"ad"Map"jÿ7gp1e"ListMapFn"Ngp1ÿƒ-N

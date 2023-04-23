@@ -1,0 +1,29 @@
+# Makefile for the ASDL manual (Version 2.0)
+#
+# This code is part of the SML/NJ system (http://smlnj.org)
+#
+# COPYRIGHT (c) 2016 The Fellowship of SML/NJ
+# All rights reserved.
+#
+# doc/manual-2.0/Makefile.  Generated from Makefile.in by configure.
+#
+
+SHELL =			/bin/sh
+PREFIX =		/workspaces/ml-yacc-calc/src
+
+.PHONY:		pdf clean distclean devclean
+
+pdf:		manual.pdf
+
+manual.pdf:	$(wildcard *.tex) $(wildcard code/*.asdl)
+	latexmk -pdf manual
+
+.PHONY:		clean distclean devclean
+
+clean:
+	latexmk -C manual
+
+distclean:	clean
+	rm -f Makefile
+
+devclean:	distclean

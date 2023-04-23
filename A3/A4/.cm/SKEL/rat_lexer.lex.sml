@@ -1,0 +1,2 @@
+Skeleton 5
+ae"RatLexFun"i2aä¢Tokens"gp1c"Rat_TOKENS"f2d"Char"ä¢TextIO"h3aä¢yyInput"jh3aä¢TIO"gp1ÿ2ad"TSIO"gp2ÿd"StreamIO"ad"TPIO"gp1d"TextPrimIO"h0aä¢UserDeclarations"h1aä¢T"gp1ÿbbd2egp1ÿ‚f5Cÿ‚!d"IO"d"Int"d"List"d"String"Cÿ‚d"Vector"d"Rational"ÿ>d"BigInt"Nf0f1ÿ>

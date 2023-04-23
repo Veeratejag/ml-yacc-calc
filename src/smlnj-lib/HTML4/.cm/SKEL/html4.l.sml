@@ -1,0 +1,2 @@
+Skeleton 5
+d2f7ä¢Vector"d"TextIO"Cä¢String"ä¢AntlrStreamPos"ä¢ULexBuffer"d"UTF8"ä¢Substring"Nad"HTML4Lexer"h1bd2aä¢UserDeclarations"h2egp1d"HTML4TokenUtils"f5Cä¢List"d"StringCvt"d"IntInf"ÿÿNbd2egp1ÿ&f7ÿ‚ÿCd"Atom"ÿ&ÿ ÿ1ÿNf0f3ÿ&ÿ ÿ1

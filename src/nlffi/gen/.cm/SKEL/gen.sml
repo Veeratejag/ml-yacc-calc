@@ -1,0 +1,2 @@
+Skeleton 5
+baä¢S"gp1d"Spec"d2f5Cd"ListPair"ÿd"OS"d"State"d"Word"Cd"Int"d"TextIO"d"AstToSpec"d"String"d"CPIFDev"Cd"LargeInt"d"Option"d"Sizes"d"ParseToAst"d"Hash"Nad"Gen"jh6ad"SS"gp1d"StringSet"Cad"SM"gp1d"StringMap"ad"IM"gp1d"IntRedBlackMap"ad"LIS"jè0gp1e"RedBlackSetFn"aä¢P"gp1d"PrettyPrint"aä¢PP"gp2ÿ„ÿ„Nÿƒ.

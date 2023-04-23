@@ -1,0 +1,2 @@
+Skeleton 5
+d3f2ä¢TextIO"d"HashString"aã¢BURGEMIT"è0ad"BurgEmit"jh4aä¢HashStringKey"jÿ&gp1c"HASH_KEY"aä¢BurgHash"jgp1ÿ8gp1e"HashTableFn"egp1d"BurgAST"f8d"List"d"Array"d"Char"Cd"Parse"ÿd"Int"ÿd"String"Ngp1ÿ

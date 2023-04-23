@@ -1,0 +1,297 @@
+
+state 0:
+
+	Start : . Exp 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Start	goto 19
+	Exp	goto 4
+	Term	goto 3
+	Factor	goto 2
+	Unit	goto 1
+
+	.	error
+
+
+state 1:
+
+	Factor : Unit .  (reduce by rule 7)
+	Factor : Unit . EXPT Factor 
+
+	ADD	reduce by rule 7
+	SUB	reduce by rule 7
+	MUL	reduce by rule 7
+	DIV	reduce by rule 7
+	EXPT	shift 7
+	RPAREN	reduce by rule 7
+	EOF	reduce by rule 7
+
+
+	.	error
+
+
+state 2:
+
+	Term : Factor .  (reduce by rule 4)
+
+	ADD	reduce by rule 4
+	SUB	reduce by rule 4
+	MUL	reduce by rule 4
+	DIV	reduce by rule 4
+	RPAREN	reduce by rule 4
+	EOF	reduce by rule 4
+
+
+	.	error
+
+
+state 3:
+
+	Exp : Term .  (reduce by rule 1)
+	Term : Term . MUL Factor 
+	Term : Term . DIV Factor 
+
+	ADD	reduce by rule 1
+	SUB	reduce by rule 1
+	MUL	shift 9
+	DIV	shift 8
+	RPAREN	reduce by rule 1
+	EOF	reduce by rule 1
+
+
+	.	error
+
+
+state 4:
+
+	Start : Exp .  (reduce by rule 0)
+	Exp : Exp . ADD Term 
+	Exp : Exp . SUB Term 
+
+	ADD	shift 11
+	SUB	shift 10
+	EOF	reduce by rule 0
+
+
+	.	error
+
+
+state 5:
+
+	Unit : LPAREN . Exp RPAREN 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Exp	goto 12
+	Term	goto 3
+	Factor	goto 2
+	Unit	goto 1
+
+	.	error
+
+
+state 6:
+
+	Unit : INT .  (reduce by rule 9)
+
+	ADD	reduce by rule 9
+	SUB	reduce by rule 9
+	MUL	reduce by rule 9
+	DIV	reduce by rule 9
+	EXPT	reduce by rule 9
+	RPAREN	reduce by rule 9
+	EOF	reduce by rule 9
+
+
+	.	error
+
+
+state 7:
+
+	Factor : Unit EXPT . Factor 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Factor	goto 13
+	Unit	goto 1
+
+	.	error
+
+
+state 8:
+
+	Term : Term DIV . Factor 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Factor	goto 14
+	Unit	goto 1
+
+	.	error
+
+
+state 9:
+
+	Term : Term MUL . Factor 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Factor	goto 15
+	Unit	goto 1
+
+	.	error
+
+
+state 10:
+
+	Exp : Exp SUB . Term 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Term	goto 16
+	Factor	goto 2
+	Unit	goto 1
+
+	.	error
+
+
+state 11:
+
+	Exp : Exp ADD . Term 
+
+	INT	shift 6
+	LPAREN	shift 5
+
+	Term	goto 17
+	Factor	goto 2
+	Unit	goto 1
+
+	.	error
+
+
+state 12:
+
+	Exp : Exp . ADD Term 
+	Exp : Exp . SUB Term 
+	Unit : LPAREN Exp . RPAREN 
+
+	ADD	shift 11
+	SUB	shift 10
+	RPAREN	shift 18
+
+
+	.	error
+
+
+state 13:
+
+	Factor : Unit EXPT Factor .  (reduce by rule 8)
+
+	ADD	reduce by rule 8
+	SUB	reduce by rule 8
+	MUL	reduce by rule 8
+	DIV	reduce by rule 8
+	RPAREN	reduce by rule 8
+	EOF	reduce by rule 8
+
+
+	.	error
+
+
+state 14:
+
+	Term : Term DIV Factor .  (reduce by rule 6)
+
+	ADD	reduce by rule 6
+	SUB	reduce by rule 6
+	MUL	reduce by rule 6
+	DIV	reduce by rule 6
+	RPAREN	reduce by rule 6
+	EOF	reduce by rule 6
+
+
+	.	error
+
+
+state 15:
+
+	Term : Term MUL Factor .  (reduce by rule 5)
+
+	ADD	reduce by rule 5
+	SUB	reduce by rule 5
+	MUL	reduce by rule 5
+	DIV	reduce by rule 5
+	RPAREN	reduce by rule 5
+	EOF	reduce by rule 5
+
+
+	.	error
+
+
+state 16:
+
+	Exp : Exp SUB Term .  (reduce by rule 3)
+	Term : Term . MUL Factor 
+	Term : Term . DIV Factor 
+
+	ADD	reduce by rule 3
+	SUB	reduce by rule 3
+	MUL	shift 9
+	DIV	shift 8
+	RPAREN	reduce by rule 3
+	EOF	reduce by rule 3
+
+
+	.	error
+
+
+state 17:
+
+	Exp : Exp ADD Term .  (reduce by rule 2)
+	Term : Term . MUL Factor 
+	Term : Term . DIV Factor 
+
+	ADD	reduce by rule 2
+	SUB	reduce by rule 2
+	MUL	shift 9
+	DIV	shift 8
+	RPAREN	reduce by rule 2
+	EOF	reduce by rule 2
+
+
+	.	error
+
+
+state 18:
+
+	Unit : LPAREN Exp RPAREN .  (reduce by rule 10)
+
+	ADD	reduce by rule 10
+	SUB	reduce by rule 10
+	MUL	reduce by rule 10
+	DIV	reduce by rule 10
+	EXPT	reduce by rule 10
+	RPAREN	reduce by rule 10
+	EOF	reduce by rule 10
+
+
+	.	error
+
+
+state 19:
+
+
+	EOF	accept
+
+
+	.	error
+
+72 of 104 action table entries left after compaction
+21 goto table entries

@@ -1,0 +1,2 @@
+Skeleton 5
+ae"LrValsFun"i2aä¢Token"gp1c"TOKEN"f±ÿh2ad"ParserData"h7aä¢Header"h2egp1ä¢ParseTree"f3ä¢List"ä¢SourceMap"ä¢TypeDefs"aä¢LrTable"gp2ÿÿ6Caÿgpÿ$båçğ±ÿ6f6ÿCd"Array"d"Char"ÿ6d"String"d"General"Nbåçğ±ÿ:d2f2ÿd"LargeInt"aä¢MlyValue"è0ad"EC"h2ÿ‚bÿƒf2ÿƒd"Error"ad"Actions"h2bÿƒf4ÿ6ÿƒÿ	ÿ*f1ÿƒNad"Tokens"jÿƒ)gp1c"C_TOKENS"

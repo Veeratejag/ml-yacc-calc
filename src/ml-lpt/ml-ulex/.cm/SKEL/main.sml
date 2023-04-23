@@ -1,0 +1,2 @@
+Skeleton 5
+d2f6d"List"Cd"LexSpec"d"Options"d"SMLTblOutput"d"DotOutput"d"OS"Cd"MLULexInput"d"MLLexInput"d"Int"d"SMLofNJ"d"TextIO"Cd"SMLFunOutput"d"String"d"DumpOutput"d"Match"d"General"Nad"Main"h3ad"RE"gp1d"RegExp"ad"Lex"gp1d"LexGen"ad"LO"gp1d"LexOutputSpec"

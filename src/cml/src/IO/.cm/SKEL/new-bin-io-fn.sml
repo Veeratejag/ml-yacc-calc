@@ -1,0 +1,2 @@
+Skeleton 5
+d2f1d"BinPrimIO"ae"BinIOFn"i2a‰¢OSPrimIO"gp1c"OS_PRIM_IO"f7d"CleanIO"d"CML"Cd"IO"d"Int"‰¢Position"d"Word8"ˇNjh8ad"PIO"gp2ˇd"PrimIO"ad"A"gp1d"Word8Array"ad"AS"gp1d"Word8ArraySlice"Cad"V"gp1d"Word8Vector"ad"VS"gp1d"Word8VectorSlice"ad"Pos"gp1ˇÅad"SV"gp1d"SyncVar"ad"StreamIO"h0Ngp1c"CML_BIN_IO"

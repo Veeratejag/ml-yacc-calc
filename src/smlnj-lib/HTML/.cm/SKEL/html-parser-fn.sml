@@ -1,0 +1,2 @@
+Skeleton 5
+ae"HTMLParserFn"i2aдўErr"gp1c"HTML_ERROR"f2яd"HTML"jh6ad"TIO"gp1d"TextIO"CaдўHTMLAttrs"jзр±яgp1e"HTMLAttrsFn"aдўHTMLLrVals"jh2aдўToken"gp2дўLrParser"я‚бяЃзр±яЃgp1e"HTMLLrValsFn"aдўLex"jh3aяяЃaдўTokens"gp2яЃ0яѓя‚gp1e"HTMLLexFn"ad"Parser"jh3aя‚7gp1я‚7aя‚gp1я‚aдўParserData"gp2яЃ0я„gp1e"JoinWithArg"ad"CheckHTML"jяЃgp1e"CheckHTMLFn"Nh0

@@ -1,0 +1,2 @@
+Skeleton 5
+ae"HTMLElementsFn"i4aä¢Tokens"çğ±ã¢HTML_TOKENS"aä¢Err"gp1c"HTML_ERROR"aä¢HTMLAttrs"gp1c"HTML_ATTRS"f5Cd"List"d"Char"ÿ0d"String"d"HashString"Njh4aä¢T"gp1ÿad"A"gp1ÿad"HTbl"jh0gp1e"HashTableFn"ad"SS"gp1d"Substring"h1aÿ‚ÿ

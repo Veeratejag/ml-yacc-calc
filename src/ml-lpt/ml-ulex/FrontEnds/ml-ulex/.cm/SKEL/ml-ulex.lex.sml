@@ -1,0 +1,2 @@
+Skeleton 5
+d2f9ä¢Char"ä¢Vector"d"Word"d"TextIO"Cä¢String"ä¢AntlrStreamPos"ä¢ULexBuffer"d"UTF8"ä¢Substring"Nad"MLULexLex"h1bd2aä¢UserDeclarations"h1aä¢Tok"gp1d"MLULexTokens"bd2egp1ÿ3f9d"List"ÿÿd"Int"Cÿ%ÿ.ÿ?ÿ‚	ÿNf0f3ÿ3ÿ.ÿ?

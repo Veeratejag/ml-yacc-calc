@@ -1,0 +1,2 @@
+Skeleton 5
+d2f8d"List"d"ListPair"d"Env"Cd"Parser"ä¢AST"d"Atom"ä¢View"d"Error"Nad"Typecheck"jh5Cad"PT"gp1d"ParseTree"ad"ModId"gp2ÿ&d"ModuleId"ad"TyId"gp2ÿ&d"TypeId"ad"ConId"gp2ÿ&d"ConstrId"aä¢Prop"gp2ÿ3ÿ‚2Nh0

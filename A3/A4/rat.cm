@@ -1,0 +1,18 @@
+Library
+    structure rat
+is  
+    rational.sml
+    rat_datatypes.sml 
+    rat_dict.sml 
+    rat_lexer.lex: mllex
+    rat_parser.yacc: MLYacc 
+    rat_glue.sml 
+    table.sml
+    stack.sml
+    rat_compiler.sml
+    
+    $/smlnj-lib.cm
+    $/basis.cm 
+    $/ml-yacc-lib.cm 
+
+

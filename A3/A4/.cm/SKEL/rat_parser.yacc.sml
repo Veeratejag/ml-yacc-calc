@@ -1,0 +1,2 @@
+Skeleton 5
+ae"RationalLrValsFun"i2aä¢Token"gp1c"TOKEN"f±ÿjh2aä¢ParserData"h7aä¢Header"h3egp1d"DataTypes"egp1d"Dictionary"f2d"Rational"d"BigInt"aä¢LrTable"gp2ÿÿ‚Caÿgpÿ,båçğ±ÿ‚f6d"Char"Cd"List"d"String"d"General"ÿ‚d"Array"Nbåçğ±ÿaä¢MlyValue"è0ad"EC"h2ÿ‚!bÿƒæ±ÿƒ!ad"Actions"h2bÿƒf2ÿ‚ÿƒ!ÿƒ=Naä¢Tokens"jÿƒ,çğ±ã¢Rational_TOKENS"h2aÿ3gp1c"PARSER_DATA"aÿ„ ÿ„-

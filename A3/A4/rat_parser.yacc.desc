@@ -1,0 +1,1996 @@
+
+state 0:
+
+	prog : . block 
+
+	TOK_PROCEDURE	reduce by rule 4
+	TOK_INTEGER	shift 7
+	TOK_BOOLEAN	shift 6
+	TOK_RATIONAL	shift 5
+	TOK_LBRACE	reduce by rule 4
+
+	prog	goto 127
+	dec	goto 4
+	vardec	goto 3
+	block	goto 2
+	decseq	goto 1
+
+	.	error
+
+
+state 1:
+
+	block : decseq . cmdseq 
+
+	TOK_LBRACE	shift 9
+
+	cmdseq	goto 8
+
+	.	error
+
+
+state 2:
+
+	prog : block .  (reduce by rule 0)
+
+	TOK_EOF	reduce by rule 0
+
+
+	.	error
+
+
+state 3:
+
+	decseq : vardec . procdec 
+
+	TOK_PROCEDURE	shift 12
+	TOK_LBRACE	reduce by rule 11
+
+	procdec	goto 11
+	procdef	goto 10
+
+	.	error
+
+
+state 4:
+
+	vardec : dec . TOK_SEMICOLON vardec 
+
+	TOK_SEMICOLON	shift 13
+
+
+	.	error
+
+
+state 5:
+
+	dec : TOK_RATIONAL . varlist TOK_SEMICOLON 
+
+	TOK_ID	shift 15
+
+	varlist	goto 14
+
+	.	error
+
+
+state 6:
+
+	dec : TOK_BOOLEAN . varlist TOK_SEMICOLON 
+
+	TOK_ID	shift 15
+
+	varlist	goto 16
+
+	.	error
+
+
+state 7:
+
+	dec : TOK_INTEGER . varlist TOK_SEMICOLON 
+
+	TOK_ID	shift 15
+
+	varlist	goto 17
+
+	.	error
+
+
+state 8:
+
+	block : decseq cmdseq .  (reduce by rule 1)
+
+	TOK_SEMICOLON	reduce by rule 1
+	TOK_EOF	reduce by rule 1
+
+
+	.	error
+
+
+state 9:
+
+	cmdseq : TOK_LBRACE . lcmd TOK_RBRACE 
+
+	TOK_READ	shift 31
+	TOK_CALL	shift 30
+	TOK_PRINT	shift 29
+	TOK_IF	shift 28
+	TOK_WHILE	shift 27
+	TOK_RBRACE	reduce by rule 15
+	TOK_ID	shift 26
+
+	cmd	goto 25
+	aCmd	goto 24
+	cCmd	goto 23
+	rCmd	goto 22
+	pCmd	goto 21
+	coCmd	goto 20
+	wCmd	goto 19
+	lcmd	goto 18
+
+	.	error
+
+
+state 10:
+
+	procdec : procdef . TOK_SEMICOLON procdec 
+
+	TOK_SEMICOLON	shift 32
+
+
+	.	error
+
+
+state 11:
+
+	decseq : vardec procdec .  (reduce by rule 2)
+
+	TOK_LBRACE	reduce by rule 2
+
+
+	.	error
+
+
+state 12:
+
+	procdef : TOK_PROCEDURE . TOK_ID block 
+
+	TOK_ID	shift 33
+
+
+	.	error
+
+
+state 13:
+
+	vardec : dec TOK_SEMICOLON . vardec 
+
+	TOK_PROCEDURE	reduce by rule 4
+	TOK_INTEGER	shift 7
+	TOK_BOOLEAN	shift 6
+	TOK_RATIONAL	shift 5
+	TOK_LBRACE	reduce by rule 4
+
+	dec	goto 4
+	vardec	goto 34
+
+	.	error
+
+
+state 14:
+
+	dec : TOK_RATIONAL varlist . TOK_SEMICOLON 
+
+	TOK_SEMICOLON	shift 35
+
+
+	.	error
+
+
+state 15:
+
+	varlist : TOK_ID . TOK_COMMA varlist 
+	varlist : TOK_ID .  (reduce by rule 9)
+
+	TOK_SEMICOLON	reduce by rule 9
+	TOK_COMMA	shift 36
+
+
+	.	error
+
+
+state 16:
+
+	dec : TOK_BOOLEAN varlist . TOK_SEMICOLON 
+
+	TOK_SEMICOLON	shift 37
+
+
+	.	error
+
+
+state 17:
+
+	dec : TOK_INTEGER varlist . TOK_SEMICOLON 
+
+	TOK_SEMICOLON	shift 38
+
+
+	.	error
+
+
+state 18:
+
+	cmdseq : TOK_LBRACE lcmd . TOK_RBRACE 
+
+	TOK_RBRACE	shift 39
+
+
+	.	error
+
+
+state 19:
+
+	cmd : wCmd .  (reduce by rule 21)
+
+	TOK_SEMICOLON	reduce by rule 21
+
+
+	.	error
+
+
+state 20:
+
+	cmd : coCmd .  (reduce by rule 20)
+
+	TOK_SEMICOLON	reduce by rule 20
+
+
+	.	error
+
+
+state 21:
+
+	cmd : pCmd .  (reduce by rule 19)
+
+	TOK_SEMICOLON	reduce by rule 19
+
+
+	.	error
+
+
+state 22:
+
+	cmd : rCmd .  (reduce by rule 18)
+
+	TOK_SEMICOLON	reduce by rule 18
+
+
+	.	error
+
+
+state 23:
+
+	cmd : cCmd .  (reduce by rule 17)
+
+	TOK_SEMICOLON	reduce by rule 17
+
+
+	.	error
+
+
+state 24:
+
+	cmd : aCmd .  (reduce by rule 16)
+
+	TOK_SEMICOLON	reduce by rule 16
+
+
+	.	error
+
+
+state 25:
+
+	lcmd : cmd . TOK_SEMICOLON lcmd 
+
+	TOK_SEMICOLON	shift 40
+
+
+	.	error
+
+
+state 26:
+
+	aCmd : TOK_ID . TOK_ASSIGN expr 
+
+	TOK_ASSIGN	shift 41
+
+
+	.	error
+
+
+state 27:
+
+	wCmd : TOK_WHILE . bexpr TOK_DO cmdseq TOK_OD 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	iexpr	goto 44
+	bexpr	goto 43
+	rexpr	goto 42
+
+	.	error
+
+
+state 28:
+
+	coCmd : TOK_IF . bexpr TOK_THEN cmdseq TOK_ELSE cmdseq TOK_FI 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	iexpr	goto 44
+	bexpr	goto 51
+	rexpr	goto 42
+
+	.	error
+
+
+state 29:
+
+	pCmd : TOK_PRINT . TOK_LPAREN expr TOK_RPAREN 
+
+	TOK_LPAREN	shift 52
+
+
+	.	error
+
+
+state 30:
+
+	cCmd : TOK_CALL . TOK_ID 
+
+	TOK_ID	shift 53
+
+
+	.	error
+
+
+state 31:
+
+	rCmd : TOK_READ . TOK_LPAREN TOK_ID TOK_RPAREN 
+
+	TOK_LPAREN	shift 54
+
+
+	.	error
+
+
+state 32:
+
+	procdec : procdef TOK_SEMICOLON . procdec 
+
+	TOK_PROCEDURE	shift 12
+	TOK_LBRACE	reduce by rule 11
+
+	procdec	goto 55
+	procdef	goto 10
+
+	.	error
+
+
+state 33:
+
+	procdef : TOK_PROCEDURE TOK_ID . block 
+
+	TOK_PROCEDURE	reduce by rule 4
+	TOK_INTEGER	shift 7
+	TOK_BOOLEAN	shift 6
+	TOK_RATIONAL	shift 5
+	TOK_LBRACE	reduce by rule 4
+
+	dec	goto 4
+	vardec	goto 3
+	block	goto 56
+	decseq	goto 1
+
+	.	error
+
+
+state 34:
+
+	vardec : dec TOK_SEMICOLON vardec .  (reduce by rule 3)
+
+	TOK_PROCEDURE	reduce by rule 3
+	TOK_LBRACE	reduce by rule 3
+
+
+	.	error
+
+
+state 35:
+
+	dec : TOK_RATIONAL varlist TOK_SEMICOLON .  (reduce by rule 5)
+
+	TOK_SEMICOLON	reduce by rule 5
+
+
+	.	error
+
+
+state 36:
+
+	varlist : TOK_ID TOK_COMMA . varlist 
+
+	TOK_ID	shift 15
+
+	varlist	goto 57
+
+	.	error
+
+
+state 37:
+
+	dec : TOK_BOOLEAN varlist TOK_SEMICOLON .  (reduce by rule 7)
+
+	TOK_SEMICOLON	reduce by rule 7
+
+
+	.	error
+
+
+state 38:
+
+	dec : TOK_INTEGER varlist TOK_SEMICOLON .  (reduce by rule 6)
+
+	TOK_SEMICOLON	reduce by rule 6
+
+
+	.	error
+
+
+state 39:
+
+	cmdseq : TOK_LBRACE lcmd TOK_RBRACE .  (reduce by rule 13)
+
+	TOK_ELSE	reduce by rule 13
+	TOK_FI	reduce by rule 13
+	TOK_OD	reduce by rule 13
+	TOK_SEMICOLON	reduce by rule 13
+	TOK_EOF	reduce by rule 13
+
+
+	.	error
+
+
+state 40:
+
+	lcmd : cmd TOK_SEMICOLON . lcmd 
+
+	TOK_READ	shift 31
+	TOK_CALL	shift 30
+	TOK_PRINT	shift 29
+	TOK_IF	shift 28
+	TOK_WHILE	shift 27
+	TOK_RBRACE	reduce by rule 15
+	TOK_ID	shift 26
+
+	cmd	goto 25
+	aCmd	goto 24
+	cCmd	goto 23
+	rCmd	goto 22
+	pCmd	goto 21
+	coCmd	goto 20
+	wCmd	goto 19
+	lcmd	goto 58
+
+	.	error
+
+
+state 41:
+
+	aCmd : TOK_ID TOK_ASSIGN . expr 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_ID	shift 63
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	expr	goto 62
+	iexpr	goto 61
+	bexpr	goto 60
+	rexpr	goto 59
+
+	.	error
+
+
+state 42:
+
+	bexpr : rexpr . TOK_GT rexpr 
+	bexpr : rexpr . TOK_GE rexpr 
+	bexpr : rexpr . TOK_LT rexpr 
+	bexpr : rexpr . TOK_LE rexpr 
+	bexpr : rexpr . TOK_EQ rexpr 
+	bexpr : rexpr . TOK_NE rexpr 
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_EQ	shift 69
+	TOK_NE	shift 68
+	TOK_GT	shift 67
+	TOK_GE	shift 66
+	TOK_LT	shift 65
+	TOK_LE	shift 64
+
+
+	.	error
+
+
+state 43:
+
+	bexpr : bexpr . TOK_OR bexpr 
+	bexpr : bexpr . TOK_AND bexpr 
+	wCmd : TOK_WHILE bexpr . TOK_DO cmdseq TOK_OD 
+
+	TOK_AND	shift 76
+	TOK_OR	shift 75
+	TOK_DO	shift 74
+
+
+	.	error
+
+
+state 44:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr . TOK_GT iexpr 
+	bexpr : iexpr . TOK_GE iexpr 
+	bexpr : iexpr . TOK_LT iexpr 
+	bexpr : iexpr . TOK_LE iexpr 
+	bexpr : iexpr . TOK_EQ iexpr 
+	bexpr : iexpr . TOK_NE iexpr 
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_EQ	shift 82
+	TOK_NE	shift 81
+	TOK_GT	shift 80
+	TOK_GE	shift 79
+	TOK_LT	shift 78
+	TOK_LE	shift 77
+
+
+	.	error
+
+
+state 45:
+
+	rexpr : TOK_RAT .  (reduce by rule 37)
+
+	TOK_ADDR	reduce by rule 37
+	TOK_SUBR	reduce by rule 37
+	TOK_MULR	reduce by rule 37
+	TOK_DIVR	reduce by rule 37
+	TOK_EQ	reduce by rule 37
+	TOK_NE	reduce by rule 37
+	TOK_GT	reduce by rule 37
+	TOK_GE	reduce by rule 37
+	TOK_LT	reduce by rule 37
+	TOK_LE	reduce by rule 37
+	TOK_AND	reduce by rule 37
+	TOK_OR	reduce by rule 37
+	TOK_THEN	reduce by rule 37
+	TOK_DO	reduce by rule 37
+	TOK_SEMICOLON	reduce by rule 37
+	TOK_RPAREN	reduce by rule 37
+
+
+	.	error
+
+
+state 46:
+
+	iexpr : TOK_NUM .  (reduce by rule 44)
+
+	TOK_ADD	reduce by rule 44
+	TOK_SUB	reduce by rule 44
+	TOK_MUL	reduce by rule 44
+	TOK_DIV	reduce by rule 44
+	TOK_MOD	reduce by rule 44
+	TOK_EQ	reduce by rule 44
+	TOK_NE	reduce by rule 44
+	TOK_GT	reduce by rule 44
+	TOK_GE	reduce by rule 44
+	TOK_LT	reduce by rule 44
+	TOK_LE	reduce by rule 44
+	TOK_AND	reduce by rule 44
+	TOK_OR	reduce by rule 44
+	TOK_THEN	reduce by rule 44
+	TOK_DO	reduce by rule 44
+	TOK_SEMICOLON	reduce by rule 44
+	TOK_RPAREN	reduce by rule 44
+
+
+	.	error
+
+
+state 47:
+
+	bexpr : TOK_FF .  (reduce by rule 61)
+
+	TOK_AND	reduce by rule 61
+	TOK_OR	reduce by rule 61
+	TOK_THEN	reduce by rule 61
+	TOK_DO	reduce by rule 61
+	TOK_SEMICOLON	reduce by rule 61
+	TOK_RPAREN	reduce by rule 61
+
+
+	.	error
+
+
+state 48:
+
+	bexpr : TOK_TT .  (reduce by rule 60)
+
+	TOK_AND	reduce by rule 60
+	TOK_OR	reduce by rule 60
+	TOK_THEN	reduce by rule 60
+	TOK_DO	reduce by rule 60
+	TOK_SEMICOLON	reduce by rule 60
+	TOK_RPAREN	reduce by rule 60
+
+
+	.	error
+
+
+state 49:
+
+	bexpr : TOK_NOT . bexpr 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	iexpr	goto 44
+	bexpr	goto 88
+	rexpr	goto 42
+
+	.	error
+
+
+state 50:
+
+	iexpr : TOK_UMINUS . TOK_NUM 
+	rexpr : TOK_UMINUS . TOK_RAT 
+
+	TOK_NUM	shift 90
+	TOK_RAT	shift 89
+
+
+	.	error
+
+
+state 51:
+
+	bexpr : bexpr . TOK_OR bexpr 
+	bexpr : bexpr . TOK_AND bexpr 
+	coCmd : TOK_IF bexpr . TOK_THEN cmdseq TOK_ELSE cmdseq TOK_FI 
+
+	TOK_AND	shift 76
+	TOK_OR	shift 75
+	TOK_THEN	shift 91
+
+
+	.	error
+
+
+state 52:
+
+	pCmd : TOK_PRINT TOK_LPAREN . expr TOK_RPAREN 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_ID	shift 63
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	expr	goto 92
+	iexpr	goto 61
+	bexpr	goto 60
+	rexpr	goto 59
+
+	.	error
+
+
+state 53:
+
+	cCmd : TOK_CALL TOK_ID .  (reduce by rule 23)
+
+	TOK_SEMICOLON	reduce by rule 23
+
+
+	.	error
+
+
+state 54:
+
+	rCmd : TOK_READ TOK_LPAREN . TOK_ID TOK_RPAREN 
+
+	TOK_ID	shift 93
+
+
+	.	error
+
+
+state 55:
+
+	procdec : procdef TOK_SEMICOLON procdec .  (reduce by rule 10)
+
+	TOK_LBRACE	reduce by rule 10
+
+
+	.	error
+
+
+state 56:
+
+	procdef : TOK_PROCEDURE TOK_ID block .  (reduce by rule 12)
+
+	TOK_SEMICOLON	reduce by rule 12
+
+
+	.	error
+
+
+state 57:
+
+	varlist : TOK_ID TOK_COMMA varlist .  (reduce by rule 8)
+
+	TOK_SEMICOLON	reduce by rule 8
+
+
+	.	error
+
+
+state 58:
+
+	lcmd : cmd TOK_SEMICOLON lcmd .  (reduce by rule 14)
+
+	TOK_RBRACE	reduce by rule 14
+
+
+	.	error
+
+
+state 59:
+
+	expr : rexpr .  (reduce by rule 28)
+	bexpr : rexpr . TOK_GT rexpr 
+	bexpr : rexpr . TOK_GE rexpr 
+	bexpr : rexpr . TOK_LT rexpr 
+	bexpr : rexpr . TOK_LE rexpr 
+	bexpr : rexpr . TOK_EQ rexpr 
+	bexpr : rexpr . TOK_NE rexpr 
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_EQ	shift 69
+	TOK_NE	shift 68
+	TOK_GT	shift 67
+	TOK_GE	shift 66
+	TOK_LT	shift 65
+	TOK_LE	shift 64
+	TOK_SEMICOLON	reduce by rule 28
+	TOK_RPAREN	reduce by rule 28
+
+
+	.	error
+
+
+state 60:
+
+	expr : bexpr .  (reduce by rule 30)
+	bexpr : bexpr . TOK_OR bexpr 
+	bexpr : bexpr . TOK_AND bexpr 
+
+	TOK_AND	shift 76
+	TOK_OR	shift 75
+	TOK_SEMICOLON	reduce by rule 30
+	TOK_RPAREN	reduce by rule 30
+
+
+	.	error
+
+
+state 61:
+
+	expr : iexpr .  (reduce by rule 29)
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr . TOK_GT iexpr 
+	bexpr : iexpr . TOK_GE iexpr 
+	bexpr : iexpr . TOK_LT iexpr 
+	bexpr : iexpr . TOK_LE iexpr 
+	bexpr : iexpr . TOK_EQ iexpr 
+	bexpr : iexpr . TOK_NE iexpr 
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_EQ	shift 82
+	TOK_NE	shift 81
+	TOK_GT	shift 80
+	TOK_GE	shift 79
+	TOK_LT	shift 78
+	TOK_LE	shift 77
+	TOK_SEMICOLON	reduce by rule 29
+	TOK_RPAREN	reduce by rule 29
+
+
+	.	error
+
+
+state 62:
+
+	aCmd : TOK_ID TOK_ASSIGN expr .  (reduce by rule 22)
+
+	TOK_SEMICOLON	reduce by rule 22
+
+
+	.	error
+
+
+state 63:
+
+	expr : TOK_ID .  (reduce by rule 31)
+
+	TOK_SEMICOLON	reduce by rule 31
+	TOK_RPAREN	reduce by rule 31
+
+
+	.	error
+
+
+state 64:
+
+	bexpr : rexpr TOK_LE . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 94
+
+	.	error
+
+
+state 65:
+
+	bexpr : rexpr TOK_LT . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 96
+
+	.	error
+
+
+state 66:
+
+	bexpr : rexpr TOK_GE . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 97
+
+	.	error
+
+
+state 67:
+
+	bexpr : rexpr TOK_GT . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 98
+
+	.	error
+
+
+state 68:
+
+	bexpr : rexpr TOK_NE . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 99
+
+	.	error
+
+
+state 69:
+
+	bexpr : rexpr TOK_EQ . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 100
+
+	.	error
+
+
+state 70:
+
+	rexpr : rexpr TOK_DIVR . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 101
+
+	.	error
+
+
+state 71:
+
+	rexpr : rexpr TOK_MULR . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 102
+
+	.	error
+
+
+state 72:
+
+	rexpr : rexpr TOK_SUBR . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 103
+
+	.	error
+
+
+state 73:
+
+	rexpr : rexpr TOK_ADDR . rexpr 
+
+	TOK_UMINUS	shift 95
+	TOK_RAT	shift 45
+
+	rexpr	goto 104
+
+	.	error
+
+
+state 74:
+
+	wCmd : TOK_WHILE bexpr TOK_DO . cmdseq TOK_OD 
+
+	TOK_LBRACE	shift 9
+
+	cmdseq	goto 105
+
+	.	error
+
+
+state 75:
+
+	bexpr : bexpr TOK_OR . bexpr 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	iexpr	goto 44
+	bexpr	goto 106
+	rexpr	goto 42
+
+	.	error
+
+
+state 76:
+
+	bexpr : bexpr TOK_AND . bexpr 
+
+	TOK_UMINUS	shift 50
+	TOK_NOT	shift 49
+	TOK_TT	shift 48
+	TOK_FF	shift 47
+	TOK_NUM	shift 46
+	TOK_RAT	shift 45
+
+	iexpr	goto 44
+	bexpr	goto 107
+	rexpr	goto 42
+
+	.	error
+
+
+state 77:
+
+	bexpr : iexpr TOK_LE . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 108
+
+	.	error
+
+
+state 78:
+
+	bexpr : iexpr TOK_LT . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 110
+
+	.	error
+
+
+state 79:
+
+	bexpr : iexpr TOK_GE . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 111
+
+	.	error
+
+
+state 80:
+
+	bexpr : iexpr TOK_GT . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 112
+
+	.	error
+
+
+state 81:
+
+	bexpr : iexpr TOK_NE . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 113
+
+	.	error
+
+
+state 82:
+
+	bexpr : iexpr TOK_EQ . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 114
+
+	.	error
+
+
+state 83:
+
+	iexpr : iexpr TOK_MOD . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 115
+
+	.	error
+
+
+state 84:
+
+	iexpr : iexpr TOK_DIV . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 116
+
+	.	error
+
+
+state 85:
+
+	iexpr : iexpr TOK_MUL . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 117
+
+	.	error
+
+
+state 86:
+
+	iexpr : iexpr TOK_SUB . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 118
+
+	.	error
+
+
+state 87:
+
+	iexpr : iexpr TOK_ADD . iexpr 
+
+	TOK_UMINUS	shift 109
+	TOK_NUM	shift 46
+
+	iexpr	goto 119
+
+	.	error
+
+
+state 88:
+
+	bexpr : bexpr . TOK_OR bexpr 
+	bexpr : bexpr . TOK_AND bexpr 
+	bexpr : TOK_NOT bexpr .  (reduce by rule 59)
+
+	TOK_AND	reduce by rule 59
+	TOK_OR	reduce by rule 59
+	TOK_THEN	reduce by rule 59
+	TOK_DO	reduce by rule 59
+	TOK_SEMICOLON	reduce by rule 59
+	TOK_RPAREN	reduce by rule 59
+
+
+	.	error
+
+
+state 89:
+
+	rexpr : TOK_UMINUS TOK_RAT .  (reduce by rule 36)
+
+	TOK_ADDR	reduce by rule 36
+	TOK_SUBR	reduce by rule 36
+	TOK_MULR	reduce by rule 36
+	TOK_DIVR	reduce by rule 36
+	TOK_EQ	reduce by rule 36
+	TOK_NE	reduce by rule 36
+	TOK_GT	reduce by rule 36
+	TOK_GE	reduce by rule 36
+	TOK_LT	reduce by rule 36
+	TOK_LE	reduce by rule 36
+	TOK_AND	reduce by rule 36
+	TOK_OR	reduce by rule 36
+	TOK_THEN	reduce by rule 36
+	TOK_DO	reduce by rule 36
+	TOK_SEMICOLON	reduce by rule 36
+	TOK_RPAREN	reduce by rule 36
+
+
+	.	error
+
+
+state 90:
+
+	iexpr : TOK_UMINUS TOK_NUM .  (reduce by rule 43)
+
+	TOK_ADD	reduce by rule 43
+	TOK_SUB	reduce by rule 43
+	TOK_MUL	reduce by rule 43
+	TOK_DIV	reduce by rule 43
+	TOK_MOD	reduce by rule 43
+	TOK_EQ	reduce by rule 43
+	TOK_NE	reduce by rule 43
+	TOK_GT	reduce by rule 43
+	TOK_GE	reduce by rule 43
+	TOK_LT	reduce by rule 43
+	TOK_LE	reduce by rule 43
+	TOK_AND	reduce by rule 43
+	TOK_OR	reduce by rule 43
+	TOK_THEN	reduce by rule 43
+	TOK_DO	reduce by rule 43
+	TOK_SEMICOLON	reduce by rule 43
+	TOK_RPAREN	reduce by rule 43
+
+
+	.	error
+
+
+state 91:
+
+	coCmd : TOK_IF bexpr TOK_THEN . cmdseq TOK_ELSE cmdseq TOK_FI 
+
+	TOK_LBRACE	shift 9
+
+	cmdseq	goto 120
+
+	.	error
+
+
+state 92:
+
+	pCmd : TOK_PRINT TOK_LPAREN expr . TOK_RPAREN 
+
+	TOK_RPAREN	shift 121
+
+
+	.	error
+
+
+state 93:
+
+	rCmd : TOK_READ TOK_LPAREN TOK_ID . TOK_RPAREN 
+
+	TOK_RPAREN	shift 122
+
+
+	.	error
+
+
+state 94:
+
+	bexpr : rexpr TOK_LE rexpr .  (reduce by rule 54)
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_AND	reduce by rule 54
+	TOK_OR	reduce by rule 54
+	TOK_THEN	reduce by rule 54
+	TOK_DO	reduce by rule 54
+	TOK_SEMICOLON	reduce by rule 54
+	TOK_RPAREN	reduce by rule 54
+
+
+	.	error
+
+
+state 95:
+
+	rexpr : TOK_UMINUS . TOK_RAT 
+
+	TOK_RAT	shift 89
+
+
+	.	error
+
+
+state 96:
+
+	bexpr : rexpr TOK_LT rexpr .  (reduce by rule 53)
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_AND	reduce by rule 53
+	TOK_OR	reduce by rule 53
+	TOK_THEN	reduce by rule 53
+	TOK_DO	reduce by rule 53
+	TOK_SEMICOLON	reduce by rule 53
+	TOK_RPAREN	reduce by rule 53
+
+
+	.	error
+
+
+state 97:
+
+	bexpr : rexpr TOK_GE rexpr .  (reduce by rule 52)
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_AND	reduce by rule 52
+	TOK_OR	reduce by rule 52
+	TOK_THEN	reduce by rule 52
+	TOK_DO	reduce by rule 52
+	TOK_SEMICOLON	reduce by rule 52
+	TOK_RPAREN	reduce by rule 52
+
+
+	.	error
+
+
+state 98:
+
+	bexpr : rexpr TOK_GT rexpr .  (reduce by rule 51)
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_AND	reduce by rule 51
+	TOK_OR	reduce by rule 51
+	TOK_THEN	reduce by rule 51
+	TOK_DO	reduce by rule 51
+	TOK_SEMICOLON	reduce by rule 51
+	TOK_RPAREN	reduce by rule 51
+
+
+	.	error
+
+
+state 99:
+
+	bexpr : rexpr TOK_NE rexpr .  (reduce by rule 56)
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_AND	reduce by rule 56
+	TOK_OR	reduce by rule 56
+	TOK_THEN	reduce by rule 56
+	TOK_DO	reduce by rule 56
+	TOK_SEMICOLON	reduce by rule 56
+	TOK_RPAREN	reduce by rule 56
+
+
+	.	error
+
+
+state 100:
+
+	bexpr : rexpr TOK_EQ rexpr .  (reduce by rule 55)
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	shift 73
+	TOK_SUBR	shift 72
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_AND	reduce by rule 55
+	TOK_OR	reduce by rule 55
+	TOK_THEN	reduce by rule 55
+	TOK_DO	reduce by rule 55
+	TOK_SEMICOLON	reduce by rule 55
+	TOK_RPAREN	reduce by rule 55
+
+
+	.	error
+
+
+state 101:
+
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+	rexpr : rexpr TOK_DIVR rexpr .  (reduce by rule 35)
+
+	TOK_ADDR	reduce by rule 35
+	TOK_SUBR	reduce by rule 35
+	TOK_MULR	reduce by rule 35
+	TOK_DIVR	reduce by rule 35
+	TOK_EQ	reduce by rule 35
+	TOK_NE	reduce by rule 35
+	TOK_GT	reduce by rule 35
+	TOK_GE	reduce by rule 35
+	TOK_LT	reduce by rule 35
+	TOK_LE	reduce by rule 35
+	TOK_AND	reduce by rule 35
+	TOK_OR	reduce by rule 35
+	TOK_THEN	reduce by rule 35
+	TOK_DO	reduce by rule 35
+	TOK_SEMICOLON	reduce by rule 35
+	TOK_RPAREN	reduce by rule 35
+
+
+	.	error
+
+
+state 102:
+
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr TOK_MULR rexpr .  (reduce by rule 34)
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	reduce by rule 34
+	TOK_SUBR	reduce by rule 34
+	TOK_MULR	reduce by rule 34
+	TOK_DIVR	reduce by rule 34
+	TOK_EQ	reduce by rule 34
+	TOK_NE	reduce by rule 34
+	TOK_GT	reduce by rule 34
+	TOK_GE	reduce by rule 34
+	TOK_LT	reduce by rule 34
+	TOK_LE	reduce by rule 34
+	TOK_AND	reduce by rule 34
+	TOK_OR	reduce by rule 34
+	TOK_THEN	reduce by rule 34
+	TOK_DO	reduce by rule 34
+	TOK_SEMICOLON	reduce by rule 34
+	TOK_RPAREN	reduce by rule 34
+
+
+	.	error
+
+
+state 103:
+
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr TOK_SUBR rexpr .  (reduce by rule 33)
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	reduce by rule 33
+	TOK_SUBR	reduce by rule 33
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_EQ	reduce by rule 33
+	TOK_NE	reduce by rule 33
+	TOK_GT	reduce by rule 33
+	TOK_GE	reduce by rule 33
+	TOK_LT	reduce by rule 33
+	TOK_LE	reduce by rule 33
+	TOK_AND	reduce by rule 33
+	TOK_OR	reduce by rule 33
+	TOK_THEN	reduce by rule 33
+	TOK_DO	reduce by rule 33
+	TOK_SEMICOLON	reduce by rule 33
+	TOK_RPAREN	reduce by rule 33
+
+
+	.	error
+
+
+state 104:
+
+	rexpr : rexpr . TOK_ADDR rexpr 
+	rexpr : rexpr TOK_ADDR rexpr .  (reduce by rule 32)
+	rexpr : rexpr . TOK_SUBR rexpr 
+	rexpr : rexpr . TOK_MULR rexpr 
+	rexpr : rexpr . TOK_DIVR rexpr 
+
+	TOK_ADDR	reduce by rule 32
+	TOK_SUBR	reduce by rule 32
+	TOK_MULR	shift 71
+	TOK_DIVR	shift 70
+	TOK_EQ	reduce by rule 32
+	TOK_NE	reduce by rule 32
+	TOK_GT	reduce by rule 32
+	TOK_GE	reduce by rule 32
+	TOK_LT	reduce by rule 32
+	TOK_LE	reduce by rule 32
+	TOK_AND	reduce by rule 32
+	TOK_OR	reduce by rule 32
+	TOK_THEN	reduce by rule 32
+	TOK_DO	reduce by rule 32
+	TOK_SEMICOLON	reduce by rule 32
+	TOK_RPAREN	reduce by rule 32
+
+
+	.	error
+
+
+state 105:
+
+	wCmd : TOK_WHILE bexpr TOK_DO cmdseq . TOK_OD 
+
+	TOK_OD	shift 123
+
+
+	.	error
+
+
+state 106:
+
+	bexpr : bexpr . TOK_OR bexpr 
+	bexpr : bexpr TOK_OR bexpr .  (reduce by rule 57)
+	bexpr : bexpr . TOK_AND bexpr 
+
+	TOK_AND	shift 76
+	TOK_OR	reduce by rule 57
+	TOK_THEN	reduce by rule 57
+	TOK_DO	reduce by rule 57
+	TOK_SEMICOLON	reduce by rule 57
+	TOK_RPAREN	reduce by rule 57
+
+
+	.	error
+
+
+state 107:
+
+	bexpr : bexpr . TOK_OR bexpr 
+	bexpr : bexpr . TOK_AND bexpr 
+	bexpr : bexpr TOK_AND bexpr .  (reduce by rule 58)
+
+	TOK_AND	reduce by rule 58
+	TOK_OR	reduce by rule 58
+	TOK_THEN	reduce by rule 58
+	TOK_DO	reduce by rule 58
+	TOK_SEMICOLON	reduce by rule 58
+	TOK_RPAREN	reduce by rule 58
+
+
+	.	error
+
+
+state 108:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr TOK_LE iexpr .  (reduce by rule 48)
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_AND	reduce by rule 48
+	TOK_OR	reduce by rule 48
+	TOK_THEN	reduce by rule 48
+	TOK_DO	reduce by rule 48
+	TOK_SEMICOLON	reduce by rule 48
+	TOK_RPAREN	reduce by rule 48
+
+
+	.	error
+
+
+state 109:
+
+	iexpr : TOK_UMINUS . TOK_NUM 
+
+	TOK_NUM	shift 90
+
+
+	.	error
+
+
+state 110:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr TOK_LT iexpr .  (reduce by rule 47)
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_AND	reduce by rule 47
+	TOK_OR	reduce by rule 47
+	TOK_THEN	reduce by rule 47
+	TOK_DO	reduce by rule 47
+	TOK_SEMICOLON	reduce by rule 47
+	TOK_RPAREN	reduce by rule 47
+
+
+	.	error
+
+
+state 111:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr TOK_GE iexpr .  (reduce by rule 46)
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_AND	reduce by rule 46
+	TOK_OR	reduce by rule 46
+	TOK_THEN	reduce by rule 46
+	TOK_DO	reduce by rule 46
+	TOK_SEMICOLON	reduce by rule 46
+	TOK_RPAREN	reduce by rule 46
+
+
+	.	error
+
+
+state 112:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr TOK_GT iexpr .  (reduce by rule 45)
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_AND	reduce by rule 45
+	TOK_OR	reduce by rule 45
+	TOK_THEN	reduce by rule 45
+	TOK_DO	reduce by rule 45
+	TOK_SEMICOLON	reduce by rule 45
+	TOK_RPAREN	reduce by rule 45
+
+
+	.	error
+
+
+state 113:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr TOK_NE iexpr .  (reduce by rule 50)
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_AND	reduce by rule 50
+	TOK_OR	reduce by rule 50
+	TOK_THEN	reduce by rule 50
+	TOK_DO	reduce by rule 50
+	TOK_SEMICOLON	reduce by rule 50
+	TOK_RPAREN	reduce by rule 50
+
+
+	.	error
+
+
+state 114:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	bexpr : iexpr TOK_EQ iexpr .  (reduce by rule 49)
+
+	TOK_ADD	shift 87
+	TOK_SUB	shift 86
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_AND	reduce by rule 49
+	TOK_OR	reduce by rule 49
+	TOK_THEN	reduce by rule 49
+	TOK_DO	reduce by rule 49
+	TOK_SEMICOLON	reduce by rule 49
+	TOK_RPAREN	reduce by rule 49
+
+
+	.	error
+
+
+state 115:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+	iexpr : iexpr TOK_MOD iexpr .  (reduce by rule 42)
+
+	TOK_ADD	reduce by rule 42
+	TOK_SUB	reduce by rule 42
+	TOK_MUL	reduce by rule 42
+	TOK_DIV	reduce by rule 42
+	TOK_MOD	reduce by rule 42
+	TOK_EQ	reduce by rule 42
+	TOK_NE	reduce by rule 42
+	TOK_GT	reduce by rule 42
+	TOK_GE	reduce by rule 42
+	TOK_LT	reduce by rule 42
+	TOK_LE	reduce by rule 42
+	TOK_AND	reduce by rule 42
+	TOK_OR	reduce by rule 42
+	TOK_THEN	reduce by rule 42
+	TOK_DO	reduce by rule 42
+	TOK_SEMICOLON	reduce by rule 42
+	TOK_RPAREN	reduce by rule 42
+
+
+	.	error
+
+
+state 116:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr TOK_DIV iexpr .  (reduce by rule 41)
+	iexpr : iexpr . TOK_MOD iexpr 
+
+	TOK_ADD	reduce by rule 41
+	TOK_SUB	reduce by rule 41
+	TOK_MUL	reduce by rule 41
+	TOK_DIV	reduce by rule 41
+	TOK_MOD	reduce by rule 41
+	TOK_EQ	reduce by rule 41
+	TOK_NE	reduce by rule 41
+	TOK_GT	reduce by rule 41
+	TOK_GE	reduce by rule 41
+	TOK_LT	reduce by rule 41
+	TOK_LE	reduce by rule 41
+	TOK_AND	reduce by rule 41
+	TOK_OR	reduce by rule 41
+	TOK_THEN	reduce by rule 41
+	TOK_DO	reduce by rule 41
+	TOK_SEMICOLON	reduce by rule 41
+	TOK_RPAREN	reduce by rule 41
+
+
+	.	error
+
+
+state 117:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr TOK_MUL iexpr .  (reduce by rule 40)
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+
+	TOK_ADD	reduce by rule 40
+	TOK_SUB	reduce by rule 40
+	TOK_MUL	reduce by rule 40
+	TOK_DIV	reduce by rule 40
+	TOK_MOD	reduce by rule 40
+	TOK_EQ	reduce by rule 40
+	TOK_NE	reduce by rule 40
+	TOK_GT	reduce by rule 40
+	TOK_GE	reduce by rule 40
+	TOK_LT	reduce by rule 40
+	TOK_LE	reduce by rule 40
+	TOK_AND	reduce by rule 40
+	TOK_OR	reduce by rule 40
+	TOK_THEN	reduce by rule 40
+	TOK_DO	reduce by rule 40
+	TOK_SEMICOLON	reduce by rule 40
+	TOK_RPAREN	reduce by rule 40
+
+
+	.	error
+
+
+state 118:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr TOK_SUB iexpr .  (reduce by rule 39)
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+
+	TOK_ADD	reduce by rule 39
+	TOK_SUB	reduce by rule 39
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_EQ	reduce by rule 39
+	TOK_NE	reduce by rule 39
+	TOK_GT	reduce by rule 39
+	TOK_GE	reduce by rule 39
+	TOK_LT	reduce by rule 39
+	TOK_LE	reduce by rule 39
+	TOK_AND	reduce by rule 39
+	TOK_OR	reduce by rule 39
+	TOK_THEN	reduce by rule 39
+	TOK_DO	reduce by rule 39
+	TOK_SEMICOLON	reduce by rule 39
+	TOK_RPAREN	reduce by rule 39
+
+
+	.	error
+
+
+state 119:
+
+	iexpr : iexpr . TOK_ADD iexpr 
+	iexpr : iexpr TOK_ADD iexpr .  (reduce by rule 38)
+	iexpr : iexpr . TOK_SUB iexpr 
+	iexpr : iexpr . TOK_MUL iexpr 
+	iexpr : iexpr . TOK_DIV iexpr 
+	iexpr : iexpr . TOK_MOD iexpr 
+
+	TOK_ADD	reduce by rule 38
+	TOK_SUB	reduce by rule 38
+	TOK_MUL	shift 85
+	TOK_DIV	shift 84
+	TOK_MOD	shift 83
+	TOK_EQ	reduce by rule 38
+	TOK_NE	reduce by rule 38
+	TOK_GT	reduce by rule 38
+	TOK_GE	reduce by rule 38
+	TOK_LT	reduce by rule 38
+	TOK_LE	reduce by rule 38
+	TOK_AND	reduce by rule 38
+	TOK_OR	reduce by rule 38
+	TOK_THEN	reduce by rule 38
+	TOK_DO	reduce by rule 38
+	TOK_SEMICOLON	reduce by rule 38
+	TOK_RPAREN	reduce by rule 38
+
+
+	.	error
+
+
+state 120:
+
+	coCmd : TOK_IF bexpr TOK_THEN cmdseq . TOK_ELSE cmdseq TOK_FI 
+
+	TOK_ELSE	shift 124
+
+
+	.	error
+
+
+state 121:
+
+	pCmd : TOK_PRINT TOK_LPAREN expr TOK_RPAREN .  (reduce by rule 25)
+
+	TOK_SEMICOLON	reduce by rule 25
+
+
+	.	error
+
+
+state 122:
+
+	rCmd : TOK_READ TOK_LPAREN TOK_ID TOK_RPAREN .  (reduce by rule 24)
+
+	TOK_SEMICOLON	reduce by rule 24
+
+
+	.	error
+
+
+state 123:
+
+	wCmd : TOK_WHILE bexpr TOK_DO cmdseq TOK_OD .  (reduce by rule 27)
+
+	TOK_SEMICOLON	reduce by rule 27
+
+
+	.	error
+
+
+state 124:
+
+	coCmd : TOK_IF bexpr TOK_THEN cmdseq TOK_ELSE . cmdseq TOK_FI 
+
+	TOK_LBRACE	shift 9
+
+	cmdseq	goto 125
+
+	.	error
+
+
+state 125:
+
+	coCmd : TOK_IF bexpr TOK_THEN cmdseq TOK_ELSE cmdseq . TOK_FI 
+
+	TOK_FI	shift 126
+
+
+	.	error
+
+
+state 126:
+
+	coCmd : TOK_IF bexpr TOK_THEN cmdseq TOK_ELSE cmdseq TOK_FI .  (reduce by rule 26)
+
+	TOK_SEMICOLON	reduce by rule 26
+
+
+	.	error
+
+
+state 127:
+
+
+	TOK_EOF	accept
+
+
+	.	error
+
+517 of 739 action table entries left after compaction
+83 goto table entries

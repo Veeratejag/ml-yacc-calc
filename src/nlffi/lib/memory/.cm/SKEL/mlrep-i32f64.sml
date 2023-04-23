@@ -1,0 +1,2 @@
+Skeleton 5
+ad"MLRep"h6aä¢Signed"gp1d"Int32"Cad"LongLongSigned"gp1d"Int64"aä¢Unsigned"gp1d"Word32"ad"LongLongUnsigned"gp1d"Word64"ad"Real"gp1d"Real64"ad"SignedBitops"jh2ad"I"gp1ÿad"W"gp1ÿ?gp1e"IntBitOps"N

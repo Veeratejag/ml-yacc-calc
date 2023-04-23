@@ -1,0 +1,2 @@
+Skeleton 5
+d2f8d"List"d"ListPair"d"Err"Cd"Nonterm"ä¢GrammarSyntax"ä¢LLKSpec"d"Atom"d"ParseFile"Cd"Token"d"Int"d"Action"ä¢AtomSet"d"Option"Nad"CheckGrammar"jh5Cad"Syn"gp1ÿ'ad"S"gp1ÿ7ad"ATbl"gp1d"AtomTable"ad"AMap"gp1d"AtomMap"ad"ASet"gp1ÿ,Nh0

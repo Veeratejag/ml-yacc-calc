@@ -1,0 +1,2 @@
+Skeleton 5
+d2f8d"CharVectorSlice"d"Unsafe"d"CML"Cd"IO"d"Int"d"String"d"Position"d"CharArraySlice"Nad"PosixTextPrimIO"jh4ad"SV"gp1d"SyncVar"ad"PF"gp2d"Posix"d"FileSys"ad"BinPrimIO"gp1d"PosixBinPrimIO"aä¢PrimIO"gp1d"TextPrimIO"h2egp1c"OS_PRIM_IO"f1ÿ‚=

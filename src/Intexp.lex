@@ -23,7 +23,7 @@ alpha = [a-zA-Z];
 digit = [0-9];
 
 whitespace = [\ \t\n];
-symbol = [+*^()\[];
+symbol = [+*^()\[]];
 any = [^];
 
 %%
